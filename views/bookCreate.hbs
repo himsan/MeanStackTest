@@ -1,0 +1,50 @@
+{{!-- Creation form for book --}}
+
+<div class="container">
+    <div class="col-lg-12 card-block">
+        <form method="post" class="form-horizontal" id="insert_form" action="/api/bookStore/v0/admin/book-create" data-toggle="validator">
+            <div class="col-lg-12">
+                <div class="page-header">
+                    <div class="pull-right">
+                        <button id="frm_edit_product_save" class="btn button btn-block" type="submit">Save
+                            <i></i>
+                        </button>
+                    </div>
+                    <h3>Book Creation</h3>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">Book Name *</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="name" name="name" class="form-control" minlength="1" maxlength="20" value="{{name}}" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="author" class="col-sm-2 control-label">Book Author *</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="author" name="author" class="form-control" minlength="1" maxlength="25" value="{{author}}" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="quantityOfBooks" class="col-sm-2 control-label"> Quantity of Books *</label>
+                    <div class="col-sm-10">
+                        <input type="number" id="quantityOfBooks" name="quantityOfBooks" class="form-control" minlength="1" maxlength="25" value="{{quantityOfBooks}}"
+                            required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="datePublished" class="col-sm-2 control-label">Published Date *</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="datePublished" name="datePublished" class="form-control" minlength="1" maxlength="10" value="{{datePublished}}"
+                            required/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="status" class="col-sm-2 control-label">Status *</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="status" name="status" class="form-control" minlength="1" maxlength="10" value="{{status}}" required/>
+                    </div>
+                </div>
+        </form>
+        </div>
+    </div>

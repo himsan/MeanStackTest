@@ -1,0 +1,9 @@
+{
+"database":{
+    "secret":"node",
+    "url":"mongodb://localhost:27017/meanstacktestdb"
+},
+
+"base_url":"/api/bookStore/v0"
+
+}

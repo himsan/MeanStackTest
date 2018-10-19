@@ -1,0 +1,99 @@
+{{!-- Book list view --}}
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="/api/bookStore/v0/admin/userlist">Users</a>
+                </li>
+                <li class="active">
+                    <a href="/api/bookStore/v0/admin/booklist">Books</a>
+                </li>
+                <li>
+                    <a href="/api/bookStore/v0/logout" class="logout fa fa-sign-out" aria-hidden="true"></a>
+                </li>
+
+            </ul>
+        </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <h3 class="col-lg-12 page-header">Books list</h3>
+        <div class="pull-right">
+            <button id="frm_edit_product_save" class="btn button btn-block" type="submit" onclick="location.href='/api/bookStore/v0/admin/book-create'">Create Book
+                <i></i>
+            </button>
+        </div>
+        <div class="pull-left">
+            <button id="frm_edit_product_save" class="btn button btn-block" type="submit" onclick="sortTable()">Sort
+                <i></i>
+            </button>
+        </div>
+    </div>
+    <div class="col-lg-12 table-responsive card-block">
+        <table style="width:100%" id="myTable">
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Quantity of Books</th>
+                    <th>Date Published</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each top_results}}
+                <tr>
+                    <td>
+                        {{this.name}}
+                    </td>
+                    <td>
+                        {{this.author}}
+                    </td>
+                    <td>{{this.quantityOfBooks}}</td>
+                    <td>{{this.datePublished}}</td>
+                    <td>
+                        <a href="/api/bookStore/v0/admin/book-update/{{this._id}}" class="fa fa-edit text-center">
+                        </a>
+                    </td>
+                    <td>
+                        <a class="text-danger text-center" onclick="location.href='/api/bookStore/v0/admin/book-delete/{{this._id}}'">
+                            <i class="fa fa-trash-o store"></i>
+                        </a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    function sortTable() {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("myTable");
+        switching = true;
+
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("td")[0];
+                y = rows[i + 1].getElementsByTagName("td")[0];
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
+</script>
